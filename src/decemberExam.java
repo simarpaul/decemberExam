@@ -2,9 +2,9 @@
  * Name:        Simarpaul Singh
  * Class:       CS30S
  * 
- * Assignment:  Assignment 3
+ * Assignment:  December Exam
  * 
- * Description: object oriented programing, fuel economy
+ * Description: 
  * 
  **********************************************************************/
 
@@ -18,7 +18,7 @@ import java.io.PrintWriter;
 import java.text.DecimalFormat;
 
 public class decemberExam {
-    public static void main(String[] args, Employee Employee) throws IOException{
+    public static void main(String[] args) throws IOException{
     // ********** declaration of constants **********
     
         final int employeeNum = 10;
@@ -86,7 +86,7 @@ public class decemberExam {
         System.out.println("Car 1 fuel level: " + df.format(Employee.employWage) + " litres");
 
         System.out.println("\n\nCar 2");
-        
+        /*
         System.out.println("Car 2 fuel Level: " + df.format(car2.getFuelLevel()) + " litres");
         
         System.out.println("Car 2 fuel economy: " + df.format(car2.getKPL()) + " km per 100l");
@@ -108,7 +108,7 @@ public class decemberExam {
         System.out.println("Car 1 fuel level: " + df.format(car1.getFuelLevel()) + " litres");
         System.out.println("Car 1 distance to empty: " + df.format(car1.getDistance()) + " kilometers");
 
-
+*/
     // ************************ print output ****************************
     
     // ******** closing message *********
