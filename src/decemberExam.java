@@ -16,12 +16,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class decemberExam {
     public static void main(String[] args) throws IOException{
     // ********** declaration of constants **********
     
-        final int employeeNum = 10;
+        final int employeeNum = 12;
         
     // ********** declaration of variables **********
 
@@ -37,11 +38,12 @@ public class decemberExam {
         
         String nl = System.lineSeparator();
         
-        int[] employees = new int[employeeNum];
+        double[] employees = new double[13];
         
         int actualSize = 0;
         
         int i = 0;
+        
         
         // new line character for file writing
     	
@@ -49,7 +51,8 @@ public class decemberExam {
         
         DecimalFormat df = new DecimalFormat("0.000");
         
-        Employee = new Employee();
+        //Employee employee;
+        Employee e1 = new Employee();
 
         //Employee employee2 = new Employee();	   
     
@@ -74,19 +77,23 @@ public class decemberExam {
       
             tokens = strin.split(delim);     
                
-            employees[employeeNum] = Integer.parseInt(tokens[i]);     // data is parsed from data file into array
+            employees[employeeNum] = Double.parseDouble(tokens[i]);     // data is parsed from data file into array
             actualSize ++;                                          // counts numbers
            
-            //System.out.println(tokens[i]);                        // test to see if numbers are read
+            strin = fin.readLine();                               //update statement
+            System.out.println(tokens[i]);
+            System.out.println(tokens[i + 1]);                        // test to see if numbers are read
             }
          
-            strin = fin.readLine();  //update statement
+            
+            //System.out.println(Arrays.toString(employees));
          
-        System.out.println("Employee" + Employee.ID);
+        System.out.println("Employee " + Employee.nextID);
+        
         System.out.println("Car 1 fuel level: " + df.format(Employee.employWage) + " litres");
-
+/*
         System.out.println("\n\nCar 2");
-        /*
+        
         System.out.println("Car 2 fuel Level: " + df.format(car2.getFuelLevel()) + " litres");
         
         System.out.println("Car 2 fuel economy: " + df.format(car2.getKPL()) + " km per 100l");
@@ -107,8 +114,8 @@ public class decemberExam {
         System.out.println("\n\nCar 1 after driving 100km");
         System.out.println("Car 1 fuel level: " + df.format(car1.getFuelLevel()) + " litres");
         System.out.println("Car 1 distance to empty: " + df.format(car1.getDistance()) + " kilometers");
-
 */
+
     // ************************ print output ****************************
     
     // ******** closing message *********
