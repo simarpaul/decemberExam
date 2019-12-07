@@ -2,14 +2,10 @@
  * Name:        Simarpaul Singh
  * Class:       CS30S
  * 
- * Assignment:  December Exam Employee
+ * Assignment:  December Exam Employee Payroll
  * 
  * Description: 
  **********************************************************************/
-
-// import statements go here
-import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 // import libraries as needed here
 
@@ -22,9 +18,9 @@ public class Employee {
     //*** Instance Variables **
     
     double employWage = 0.0;        // employee wage
-    private double hoursWorked = 0.0;       // hours worked
+    private double hoursWorked = 0;       // hours worked
     private double grossPay = 0.0;          // gross pay
-    public int ID = 0;                      // employee id
+    private int ID = 0;                      // employee id
     private double otPay = 0.0;
     private double regPay = 0.0;
     
@@ -32,24 +28,27 @@ public class Employee {
     /*****************************************
     * Description: default constructor for employee
     * 
-    * @param ID -> double, assigns employ id number 
+    * @param
     * 
     * @return no return   
     * ****************************************/
     public Employee(){
 
-        nextID = 1000;
+        ID = nextID++;
+        hoursWorked = 0;
         employWage = 0.0;
-        hoursWorked = 0.0;
-
+        
     }
+    
      /*****************************************
      /*****************************************
     * Description: initializes Employee
     * 
+    * @param w
+    * @param hW
+    * 
     * ****************************************/
-    
-    public Employee(double hW, double w){
+    public Employee(double w, double hW){
        
         ID = nextID++;          // specialized employ id
         employWage = w;         // employ wage
@@ -68,7 +67,7 @@ public class Employee {
     * ****************************************/
     public int getID(){
         
-        return this.nextID;
+        return this.ID;
     }
             
      /*****************************************
@@ -137,14 +136,27 @@ public class Employee {
     * 
     * @return
     * ****************************************/
+    public double calculateGrossPay(double regPay, double otPay){
+        
+        grossPay = regPay + otPay;
+        
+        return this.grossPay;
+    }
+    /*****************************************
+    * Description: 
+    * 
+    * Interface:
+    * 
+    * @return
+    * ****************************************/
     public double toString(double calculatePay){
          
         double output = employWage +
                         hoursWorked +
-                        grossPay +
                         ID +
                         regPay +
-                        otPay;
+                        otPay +
+                        grossPay; 
         return output;
     }
     
@@ -156,7 +168,7 @@ public class Employee {
     * 
     * @return  
     * ****************************************/
-    public void EmployWage(double eW){
+    public void employWage(double eW){
        
         employWage += eW;
     }
@@ -167,7 +179,8 @@ public class Employee {
     * @param  
     * 
     * ****************************************/
-    public void hoursWorked(){
+    public void hoursWorked(double hW){
         
+        hoursWorked += hW;
     }
 } // end of public class
