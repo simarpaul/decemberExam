@@ -2,7 +2,7 @@
  * Name:        Simarpaul Singh
  * Class:       CS30S
  * 
- * Assignment:  December Exam
+ * Assignment:  December Exam Employee Payroll
  * 
  * Description: 
  * 
@@ -16,13 +16,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
-import java.util.Arrays;
 
 public class decemberExam {
     public static void main(String[] args) throws IOException{
     // ********** declaration of constants **********
     
-        final int employeeNum = 12;
+        final int MAXSIZE = 10; // maxsize of array
         
     // ********** declaration of variables **********
 
@@ -36,25 +35,16 @@ public class decemberExam {
         String delim = "[ :]+";     // delimiter string for splitting input string
         String[] tokens;                        // string array for gathering input
         
-        String nl = System.lineSeparator();
+        String nl = System.lineSeparator();     // new line character for file writing
         
-        double[] employees = new double[13];
-        
+        Employee employees[] = new Employee[MAXSIZE]; // array with objects of employee        
         int actualSize = 0;
-        
-        int i = 0;
-        
-        
-        // new line character for file writing
-    	
+       
     // ***** create objects *******
         
         DecimalFormat df = new DecimalFormat("0.000");
         
-        //Employee employee;
-        Employee e1 = new Employee();
-
-        //Employee employee2 = new Employee();	   
+        Employee e1 = new Employee();	   
     
         programInfo Programclass= new programInfo();    // creates an object for output banners and closing messages
         
@@ -70,51 +60,30 @@ public class decemberExam {
         programInfo.fileBanner(fout,aInfo);    // print banner to output file
 	    	
        // ************************ processing ***************************
-            
+                    
             strin = fin.readLine();             // reads line from data file
-        
+            //System.out.println(strin);
             while (strin != null){              // start while loop
       
             tokens = strin.split(delim);     
                
-            employees[employeeNum] = Double.parseDouble(tokens[i]);     // data is parsed from data file into array
-            actualSize ++;                                          // counts numbers
+            employees[actualSize] = new Employee(Double.parseDouble(tokens[0]), Double.parseDouble(tokens[1]));    // data is parsed from data file into array
+            
+            actualSize++;                                          // counts numbers
            
+            //System.out.println(employees[actualSize].toString);
             strin = fin.readLine();                               //update statement
-            System.out.println(tokens[i]);
-            System.out.println(tokens[i + 1]);                        // test to see if numbers are read
+           
             }
          
-            
+            //e1.EmployWage(w);
+            //e1.hoursWorked(hW);
             //System.out.println(Arrays.toString(employees));
          
-        System.out.println("Employee " + Employee.nextID);
+           
+            
+            System.out.println("Employee " + Employee.nextID);
         
-        System.out.println("Car 1 fuel level: " + df.format(Employee.employWage) + " litres");
-/*
-        System.out.println("\n\nCar 2");
-        
-        System.out.println("Car 2 fuel Level: " + df.format(car2.getFuelLevel()) + " litres");
-        
-        System.out.println("Car 2 fuel economy: " + df.format(car2.getKPL()) + " km per 100l");
-        System.out.println("Car 2 distance to empty: " + df.format(car2.getDistance()) + " kilometers");
-
-        // *** change the state of car 1 ***
-
-        car1.gasUp(28);
-        car1.setKPL(10.5);
-
-        System.out.println("\n\nCar 1");
-        System.out.println("Car 1 fuel level: " + df.format(car1.getFuelLevel()) + " litres");
-        System.out.println("Car 1 fuel economy: " + df.format(car1.getKPL()) + " km per 100l");
-        System.out.println("Car 1 distance to empty: " + df.format(car1.getDistance()) + " kilometers");
-
-        car1.drive(100);		// drive 100km in car 1
-
-        System.out.println("\n\nCar 1 after driving 100km");
-        System.out.println("Car 1 fuel level: " + df.format(car1.getFuelLevel()) + " litres");
-        System.out.println("Car 1 distance to empty: " + df.format(car1.getDistance()) + " kilometers");
-*/
 
     // ************************ print output ****************************
     
