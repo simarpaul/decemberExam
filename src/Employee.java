@@ -21,7 +21,7 @@ public class Employee {
     
     //*** Instance Variables **
     
-    private double employWage = 0.0;        // employee wage
+    double employWage = 0.0;        // employee wage
     private double hoursWorked = 0.0;       // hours worked
     private double grossPay = 0.0;          // gross pay
     public int ID = 0;                      // employee id
@@ -30,7 +30,7 @@ public class Employee {
     
     //*** Constructors ***
     /*****************************************
-    * Description: Creates a ID for employee
+    * Description: default constructor for employee
     * 
     * @param ID -> double, assigns employ id number 
     * 
@@ -38,22 +38,22 @@ public class Employee {
     * ****************************************/
     public Employee(){
 
+        nextID = 1000;
         employWage = 0.0;
         hoursWorked = 0.0;
-        grossPay = 0.0;
-        nextID = 0;
+
     }
      /*****************************************
      /*****************************************
-    * Description:
+    * Description: initializes Employee
     * 
     * ****************************************/
     
-    public Employee(double w, double hW, double gP, int nextID){
+    public Employee(double hW, double w){
+       
         ID = nextID++;          // specialized employ id
         employWage = w;         // employ wage
         hoursWorked = hW;       // hours worked
-        grossPay = gP;          // gross pay
 
     }
     
@@ -79,6 +79,7 @@ public class Employee {
     * @return
     * ****************************************/
     public double getEmployWage(double employWage){
+        
         return this.employWage;
     }
     
@@ -96,16 +97,6 @@ public class Employee {
     
     }
        
-    /*****************************************
-    * Description:
-    * 
-    * Interface:
-    * 
-    * @return
-    * ****************************************/
-    public double getGrossPay(){
-        return this.grossPay;
-    }
      /*****************************************
     * Description:
     * 
@@ -114,9 +105,16 @@ public class Employee {
     * @return
     * ****************************************/
     public double calculateRegHours(double hoursWorked, double employWage){
+       
+        if(hoursWorked % 40 == hoursWorked)
+            regPay = hoursWorked * employWage;
         
-        return this.hoursWorked * employWage;
-    }
+          //  else
+            
+           // regPay = hoursWorked - (hoursWorked - 40) * 1.5;
+          
+        return this.regPay;
+    } // end
     /*****************************************
     * Description:
     * 
@@ -124,15 +122,30 @@ public class Employee {
     * 
     * @return
     * ****************************************/
-    public double calculatePay(double hoursWorked, double employWage){
+    public double calculateOTPay(double hoursWorked, double employWage){
       
-        if(hoursWorked <= 40)
-            regPay = hoursWorked * employWage;
+        if (hoursWorked % 40 != hoursWorked)
+        otPay = hoursWorked % 40 * (employWage * 1.5);
         
-            else
-            otPay = hoursWorked - (hoursWorked - 40) * 1.5;
-            
-        return this.otPay + regPay;
+        return this.otPay;
+    
+                } // end
+    /*****************************************
+    * Description: 
+    * 
+    * Interface:
+    * 
+    * @return
+    * ****************************************/
+    public double toString(double calculatePay){
+         
+        double output = employWage +
+                        hoursWorked +
+                        grossPay +
+                        ID +
+                        regPay +
+                        otPay;
+        return output;
     }
     
     //*** Setters ***
@@ -143,9 +156,9 @@ public class Employee {
     * 
     * @return  
     * ****************************************/
-    public void EmployWage(double employWage){
+    public void EmployWage(double eW){
        
-        //return this.employWage;
+        employWage += eW;
     }
     
     /*****************************************
@@ -157,15 +170,4 @@ public class Employee {
     public void hoursWorked(){
         
     }
-     /*****************************************
-    * Description:
-    * 
-    * @param 
-    *  
-    * ****************************************/
-    public void grossPay(){
-         
-    }
-      
-  
 } // end of public class
