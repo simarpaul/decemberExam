@@ -19,14 +19,14 @@ public class Employee {
     
     double employWage = 0.0;        // employee wage
     private double hoursWorked = 0;       // hours worked
-    private double grossPay = 0.0;          // gross pay
     private int ID = 0;                      // employee id
-    private double otPay = 0.0;
-    private double regPay = 0.0;
+    private double regPay = 0.0;            // regular pay
+    private double otPay = 0.0;             // overtime pay
+    private double grossPay = 0.0;          // gross pay
     
     //*** Constructors ***
     /*****************************************
-    * Description: default constructor for employee
+    * Description: Creates employee object
     * 
     * @param
     * 
@@ -61,9 +61,7 @@ public class Employee {
     * /*****************************************
     * Description: 
     * 
-    * Interface:
-    * 
-    * @return
+    * @return ID
     * ****************************************/
     public int getID(){
         
@@ -73,11 +71,9 @@ public class Employee {
      /*****************************************
     * Description: 
     * 
-    * Interface:
-    * 
-    * @return
+    * @return employWage
     * ****************************************/
-    public double getEmployWage(double employWage){
+    public double getEmployWage(){
         
         return this.employWage;
     }
@@ -88,7 +84,7 @@ public class Employee {
     * 
     * @param 
     * 
-    * @return   
+    * @return hoursWorked
     * ****************************************/
     public double getHoursWorked(){
     
@@ -111,8 +107,9 @@ public class Employee {
         
         return this.regPay; // return regular pay
         } // end 
+    
     /*****************************************
-    * Description: Calculate over time pay
+    * Description: Calculate overtime pay
     * 
     * @return otPay
     * ****************************************/
@@ -127,7 +124,7 @@ public class Employee {
     
                 } // end
     /*****************************************
-    * Description: Calculate grossPay
+    * Description: Calculate gross pay
     * 
     * Interface:
     * 
@@ -150,8 +147,8 @@ public class Employee {
          
         String output = "";
         
-        output += (employWage , hoursWorked , ID ,calculateRegHours() 
-                , calculateOTPay() , calculateGrossPay()); 
+        output += String.format("%5d $%-5.2f %5d $%-5.2f $%-5.2f $%-5.2f" + getID(), getEmployWage(), 
+                getHoursWorked(), calculateRegHours(), calculateOTPay(), calculateGrossPay()); 
         
         return output;
     }
