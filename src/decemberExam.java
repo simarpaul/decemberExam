@@ -66,24 +66,29 @@ public class decemberExam {
             while (strin != null){              // start while loop
       
             tokens = strin.split(delim);     
-               
-            employees[actualSize] = new Employee(Double.parseDouble(tokens[0]), Double.parseDouble(tokens[1]));    // data is parsed from data file into array
+            
+            //System.out.println("Employee " + Employee.nextID);
+            
+            employees[actualSize] = new Employee(Integer.parseInt(tokens[0]), Double.parseDouble(tokens[1]));    // data is parsed from data file into array
+            
+            System.out.println(employees[actualSize].toString());
             
             actualSize++;                                          // counts numbers
            
             //System.out.println(employees[actualSize].toString);
+            
             strin = fin.readLine();                               //update statement
            
             }
-         
+       
             //e1.EmployWage(w);
             //e1.hoursWorked(hW);
             //System.out.println(Arrays.toString(employees));
          
            
             
-            System.out.println("Employee " + Employee.nextID);
-        
+            //System.out.println("Employee " + Employee.nextID);
+            //System.out.println(Employee);
 
     // ************************ print output ****************************
     
