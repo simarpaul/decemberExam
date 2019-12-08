@@ -4,7 +4,7 @@
  * 
  * Assignment:  December Exam Employee Payroll
  * 
- * Description: 
+ * Description: Class file which creates and manages employee object
  **********************************************************************/
 
 // import libraries as needed here
@@ -13,107 +13,106 @@ public class Employee {
     
     // *** Class Variables **
     
-    public static int nextID = 1000;           // starts employee id at 0
+    public static int nextID = 1000;       // starts employee id at 1000
     
     //*** Instance Variables **
     
-    double employWage = 0.0;        // employee wage
-    private double hoursWorked = 0;       // hours worked
-    private int ID = 0;                      // employee id
+    double employWage = 0.0;                // employee wage
+    private double hoursWorked = 0;         // hours worked
+    private int ID = 0;                     // employee id
     private double regPay = 0.0;            // regular pay
     private double otPay = 0.0;             // overtime pay
     private double grossPay = 0.0;          // gross pay
     
     //*** Constructors ***
     /*****************************************
-    * Description: Creates employee object
-    * 
-    * @param
+    * Description: Creates employee object, default constructor
     * 
     * @return no return   
     * ****************************************/
-    public Employee(){
+    public Employee(){ // start
 
         ID = nextID++;
         hoursWorked = 0;
         employWage = 0.0;
        
-    }
+    } // end
     
      /*****************************************
      /*****************************************
-    * Description: initializes Employee
+    * Description: Creates employee object, initializing constructor
     * 
-    * @param w
-    * @param hW
+    * @param hW -> hours worked
+    * @param w -> wage
     * 
     * ****************************************/
-    public Employee(double hW, double w){
+    public Employee(double hW, double w){ // start
        
         ID = nextID++;          // specialized employ id
         hoursWorked = hW;       // hours worked
         employWage = w;         // employ wage
 
-    }
+    } // end
     
     /*****************************************
     * //*** Getters ***
     * /*****************************************
-    * Description: 
+    * Description: Gets employee id
     * 
-    * @return ID
+    * @return ID -> employees id
     * ****************************************/
-    public int getID(){
+    public int getID(){ // start
         
         return this.ID;
-    }
+    } // end
             
      /*****************************************
-    * Description: 
+    * Description: Gets employee wage
     * 
-    * @return employWage
+    * @return employWage -> employees wage per hour
     * ****************************************/
-    public double getEmployWage(){
+    public double getEmployWage(){ // start
         
         return this.employWage;
-    }
-    
-    
+    } // end
+   
     /*****************************************
-    * Description:
+    * Description: Gets employees hours worked
     * 
-    * @param 
-    * 
-    * @return hoursWorked
+    * @return hoursWorked -> total hours worked by employee
     * ****************************************/
-    public double getHoursWorked(){
+    public double getHoursWorked(){ // start
     
         return this.hoursWorked;
     
-    }
+    } // end
        
      /*****************************************
     * Description: Calculate regular pay
     * 
-    * @return regPay
+    * @return regPay -> employees total pay for hours less than or equal to 40
     * ****************************************/
-    public double calculateRegHours(){
+    public double calculateRegHours(){ // start
        
         if (hoursWorked <= 40){ // start if
+            
             regPay = hoursWorked * employWage;
         }  // end if
-        else
-            regPay = ((hoursWorked - (hoursWorked - 40)) * employWage);
         
+        else { // start else
+            
+            regPay = ((hoursWorked - (hoursWorked - 40)) * employWage);
+            
+        } // end else
         return this.regPay; // return regular pay
         } // end 
     
     /*****************************************
     * Description: Calculate overtime pay
     * 
-    * @return otPay
+    * @return otPay -> employees pay for hours over 40
     * ****************************************/
-    public double calculateOTPay(){
+    public double calculateOTPay(){ // start
       
         if (hoursWorked > 40){ // start if
             
@@ -121,60 +120,58 @@ public class Employee {
  
         } // end if
         return this.otPay;
+        
+        } // end
     
-                } // end
     /*****************************************
     * Description: Calculate gross pay
     * 
-    * Interface:
-    * 
-    * @return grossPay
+    * @return grossPay -> employees gross pay, regular and overtime pay added together
     * ****************************************/
-    public double calculateGrossPay(){
+    public double calculateGrossPay(){ // start
         
         grossPay = regPay + otPay;
         
         return this.grossPay;
-    }
+    } // end
+    
     /*****************************************
-    * Description: 
+    * Description: Output data using toString
     * 
-    * Interface:
-    * 
-    * @return output -> data; including calculations and data from data file along with id
+    * @return output -> data, including calculations and data from data file along with id
     * ****************************************/
-    public String toString(){
+    public String toString(){ // start
          
         String output = "";
         
         output += String.format("%5s          $%-10.2f %5s         $%-10.2f      $%-10.2f     $%-10.2f", 
                 getID(), getEmployWage(),getHoursWorked(), calculateRegHours(), calculateOTPay(), 
-                calculateGrossPay()); 
+                calculateGrossPay()); // formats data for output
         
         return output;
-    }
+    } // end
     
     //*** Setters ***
     /*****************************************
-    * Description: 
+    * Description: sets new value for employee wage
     * 
-    * @param eW
+    * @param eW -> employWage
     * 
-    * @return  
     * ****************************************/
-    public void employWage(double eW){
+    public void setEmployWage(double eW){ // start
        
         employWage += eW;
-    }
+    } // end
     
     /*****************************************
-    * Description: 
+    * Description: sets new value for hours worked by each individual employee
     * 
-    * @param  
+    * @param hW -> hoursWorked
     * 
     * ****************************************/
-    public void hoursWorked(double hW){
+    public void setHoursWorked(double hW){ // start
         
         hoursWorked += hW;
-    }
+    } // end
+    
 } // end of public class
