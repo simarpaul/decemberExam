@@ -15,13 +15,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DecimalFormat;
 
 public class decemberExam {
     public static void main(String[] args) throws IOException{
     // ********** declaration of constants **********
     
-        final int MAXSIZE = 10; // maxsize of array
+        final int MAXSIZE = 10;     // maxsize of array
         
     // ********** declaration of variables **********
 
@@ -37,12 +36,14 @@ public class decemberExam {
         
         String nl = System.lineSeparator();     // new line character for file writing
         
-        Employee employees[] = new Employee[MAXSIZE]; // array with objects of employee        
-        int actualSize = 0;
+        Employee employees[] = new Employee[MAXSIZE];   // array with objects of employee        
+        int actualSize = 0;                             // size of array
+        
+        double addEmployWage = 11.75;                   // additional employee hourly wage
+        double addEmployHoursWorked = 24;               // additional employee hours worked
+        int addEmployID = 1007;
        
     // ***** create objects *******
-        
-        DecimalFormat df = new DecimalFormat("0.000");
         
         Employee e1 = new Employee();	   
     
@@ -60,35 +61,33 @@ public class decemberExam {
         programInfo.fileBanner(fout,aInfo);    // print banner to output file
 	    	
        // ************************ processing ***************************
-                    
+            
+            System.out.format("%10s %8s %15s %15s %15s %14s", "Employee ID", "Wage", "Hours Worked", "Regular Pay",
+                    "Overtime Pay", "Gross Pay" + nl); // formats headers
+             
+            
             strin = fin.readLine();             // reads line from data file
-            //System.out.println(strin);
+            //System.out.println(strin);        // test code
+            
             while (strin != null){              // start while loop
       
-            tokens = strin.split(delim);     
-            
-            //System.out.println("Employee " + Employee.nextID);
+            tokens = strin.split(delim);        // strin to tokens
             
             employees[actualSize] = new Employee(Integer.parseInt(tokens[0]), Double.parseDouble(tokens[1]));    // data is parsed from data file into array
             
-            System.out.println(employees[actualSize].toString());
+            System.out.println(employees[actualSize].toString());       // calls method with output from class file
             
-            actualSize++;                                          // counts numbers
-           
-            //System.out.println(employees[actualSize].toString);
+            actualSize++;                                          // increments size of array
             
-            strin = fin.readLine();                               //update statement
+            strin = fin.readLine();                               // update statement
            
-            }
+            } // end while loop
        
-            //e1.EmployWage(w);
-            //e1.hoursWorked(hW);
-            //System.out.println(Arrays.toString(employees));
-         
-           
+            System.out.println(nl + " Additional Employee");
             
-            //System.out.println("Employee " + Employee.nextID);
-            //System.out.println(Employee);
+            e1.setEmployWage(addEmployWage);                    // set wage for additional employee
+            e1.setHoursWorked(addEmployHoursWorked);            // set hours worked for additional employee
+            System.out.println(e1.toString());                  // call toString method
 
     // ************************ print output ****************************
     
