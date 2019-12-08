@@ -4,7 +4,7 @@
  * 
  * Assignment:  December Exam Employee Payroll
  * 
- * Description: 
+ * Description: Client file for employee payroll
  * 
  **********************************************************************/
 
