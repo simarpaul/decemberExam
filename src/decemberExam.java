@@ -41,11 +41,10 @@ public class decemberExam {
         
         double addEmployWage = 11.75;                   // additional employee hourly wage
         double addEmployHoursWorked = 24;               // additional employee hours worked
-        int addEmployID = 1007;
        
     // ***** create objects *******
         
-        Employee e1 = new Employee();	   
+        Employee e1 = new Employee();                   // employee object
     
         programInfo Programclass= new programInfo();    // creates an object for output banners and closing messages
         
@@ -56,14 +55,20 @@ public class decemberExam {
 
         programInfo.printBanner(aInfo);     // print banner
       
-        programInfo.windowBanner(aInfo);   // print banner
+        programInfo.windowBanner(aInfo);    // print banner
         
         programInfo.fileBanner(fout,aInfo);    // print banner to output file
 	    	
        // ************************ processing ***************************
-            
+           
             System.out.format("%10s %8s %15s %15s %15s %14s", "Employee ID", "Wage", "Hours Worked", "Regular Pay",
                     "Overtime Pay", "Gross Pay" + nl); // formats headers
+            
+            System.out.println(nl + " Additional Employee");
+            
+            e1.setEmployWage(addEmployWage);                    // set wage for additional employee
+            e1.setHoursWorked(addEmployHoursWorked);            // set hours worked for additional employee
+            System.out.println(e1.toString() + nl);                  // call toString method
              
             
             strin = fin.readLine();             // reads line from data file
@@ -82,15 +87,7 @@ public class decemberExam {
             strin = fin.readLine();                               // update statement
            
             } // end while loop
-       
-            System.out.println(nl + " Additional Employee");
-            
-            e1.setEmployWage(addEmployWage);                    // set wage for additional employee
-            e1.setHoursWorked(addEmployHoursWorked);            // set hours worked for additional employee
-            System.out.println(e1.toString());                  // call toString method
 
-    // ************************ print output ****************************
-    
     // ******** closing message *********
     
         programInfo.printEnd();             // print closing messages to console window
@@ -102,6 +99,5 @@ public class decemberExam {
         
        // ********************** static methods **************************
       
-        
     }  // end main
 }  // end class
