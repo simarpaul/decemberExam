@@ -24,6 +24,9 @@ public class Employee {
     private double otPay = 0.0;             // overtime pay
     private double grossPay = 0.0;          // gross pay
     
+    private int limit = 40;                 // regular hours limit
+    private double otExtra = 1.5;           // multiplier for overtime payment
+    
     //*** Constructors ***
     /*****************************************
     * Description: Creates employee object, default constructor
@@ -94,14 +97,14 @@ public class Employee {
     * ****************************************/
     public double calculateRegHours(){ // start
        
-        if (hoursWorked <= 40){ // start if
+        if (hoursWorked <= limit){ // start if
             
             regPay = hoursWorked * employWage;
         }  // end if
         
         else { // start else
             
-            regPay = ((hoursWorked - (hoursWorked - 40)) * employWage);
+            regPay = ((hoursWorked - (hoursWorked - limit)) * employWage);
             
         } // end else
         return this.regPay; // return regular pay
@@ -114,9 +117,9 @@ public class Employee {
     * ****************************************/
     public double calculateOTPay(){ // start
       
-        if (hoursWorked > 40){ // start if
+        if (hoursWorked > limit){ // start if
             
-        otPay = (hoursWorked - 40) * (employWage * 1.5);
+        otPay = (hoursWorked - limit) * (employWage * otExtra);
  
         } // end if
         return this.otPay;
