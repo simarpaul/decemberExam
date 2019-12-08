@@ -147,8 +147,9 @@ public class Employee {
          
         String output = "";
         
-        output += String.format("%5d $%-5.2f %5d $%-5.2f $%-5.2f $%-5.2f" + getID(), getEmployWage(), 
-                getHoursWorked(), calculateRegHours(), calculateOTPay(), calculateGrossPay()); 
+        output += String.format("%5s          $%-10.2f %5s         $%-10.2f      $%-10.2f     $%-10.2f", 
+                getID(), getEmployWage(),getHoursWorked(), calculateRegHours(), calculateOTPay(), 
+                calculateGrossPay()); 
         
         return output;
     }
