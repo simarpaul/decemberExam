@@ -37,7 +37,7 @@ public class Employee {
         ID = nextID++;
         hoursWorked = 0;
         employWage = 0.0;
-        
+       
     }
     
      /*****************************************
@@ -97,46 +97,43 @@ public class Employee {
     }
        
      /*****************************************
-    * Description:
+    * Description: Calculate regular pay
     * 
-    * Interface:
-    * 
-    * @return
+    * @return regPay
     * ****************************************/
-    public double calculateRegHours(double hoursWorked, double employWage){
+    public double calculateRegHours(){
        
-        if(hoursWorked % 40 == hoursWorked)
+        if (hoursWorked <= 40){ // start if
             regPay = hoursWorked * employWage;
+        }  // end if
+        else
+            regPay = ((hoursWorked - (hoursWorked - 40)) * employWage);
         
-          //  else
-            
-           // regPay = hoursWorked - (hoursWorked - 40) * 1.5;
-          
-        return this.regPay;
-    } // end
+        return this.regPay; // return regular pay
+        } // end 
     /*****************************************
-    * Description:
+    * Description: Calculate over time pay
     * 
-    * Interface:
-    * 
-    * @return
+    * @return otPay
     * ****************************************/
-    public double calculateOTPay(double hoursWorked, double employWage){
+    public double calculateOTPay(){
       
-        if (hoursWorked % 40 != hoursWorked)
-        otPay = hoursWorked % 40 * (employWage * 1.5);
-        
+        if (hoursWorked > 40){ // start if
+            
+        otPay = (hoursWorked - 40) * (employWage * 1.5);
+ 
+        } // end if
         return this.otPay;
     
                 } // end
     /*****************************************
-    * Description: 
+    * Description: Calculate grossPay
     * 
     * Interface:
     * 
-    * @return
+    * @return grossPay
     * ****************************************/
-    public double calculateGrossPay(double regPay, double otPay){
+    public double calculateGrossPay(){
         
         grossPay = regPay + otPay;
         
@@ -147,22 +144,23 @@ public class Employee {
     * 
     * Interface:
     * 
-    * @return
+    * @return output -> data; including calculations and data from data file along with id
     * ****************************************/
     public String toString(){
          
         String output = "";
         
-        output += ("Wage; " + employWage + " Hours Worked; " + hoursWorked + " ID; " + ID + " Hourly Pay; " + regPay + " Over-time Pay; " + otPay + " Gross Pay; " + grossPay); 
+        output += (employWage , hoursWorked , ID ,calculateRegHours() 
+                , calculateOTPay() , calculateGrossPay()); 
         
-                return output;
+        return output;
     }
     
     //*** Setters ***
     /*****************************************
     * Description: 
     * 
-    * @param employWage  
+    * @param eW
     * 
     * @return  
     * ****************************************/
@@ -172,7 +170,7 @@ public class Employee {
     }
     
     /*****************************************
-    * Description: takes on value of new fuel economy
+    * Description: 
     * 
     * @param  
     * 
