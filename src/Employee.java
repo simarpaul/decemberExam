@@ -48,11 +48,11 @@ public class Employee {
     * @param hW
     * 
     * ****************************************/
-    public Employee(double w, double hW){
+    public Employee(double hW, double w){
        
         ID = nextID++;          // specialized employ id
-        employWage = w;         // employ wage
         hoursWorked = hW;       // hours worked
+        employWage = w;         // employ wage
 
     }
     
@@ -149,15 +149,13 @@ public class Employee {
     * 
     * @return
     * ****************************************/
-    public double toString(double calculatePay){
+    public String toString(){
          
-        double output = employWage +
-                        hoursWorked +
-                        ID +
-                        regPay +
-                        otPay +
-                        grossPay; 
-        return output;
+        String output = "";
+        
+        output += ("Wage; " + employWage + " Hours Worked; " + hoursWorked + " ID; " + ID + " Hourly Pay; " + regPay + " Over-time Pay; " + otPay + " Gross Pay; " + grossPay); 
+        
+                return output;
     }
     
     //*** Setters ***
