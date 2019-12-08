@@ -1,4 +1,3 @@
-
 import java.io.PrintWriter;
 /*******************************************************
  * Name:        Simarpaul Singh
